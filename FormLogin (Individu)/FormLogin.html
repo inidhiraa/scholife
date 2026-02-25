@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>validasi password</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <form id="registrationform" onsubmit="return validasinama()">
+            <h2>Formulir Pendaftaran</h2>
+
+            <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <span class="separator">:</span>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+
+            <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <span class="separator">:</span>
+                <input type="text" id="alamat" name="alamat" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tptlahir">Tempat Lahir</label>
+                <span class="separator">:</span>
+                <input type="text" id="tptlahir" name="tptlahir" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tgllahir">Tanggal Lahir</label>
+                <span class="separator">:</span>
+                <input type="text" id="tgllahir" name="tgllahir" required>
+            </div>
+
+            <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <span class="separator">:</span>
+                <div class="radio-group">
+                    <input type="radio" name="jk" value="Laki-Laki" required> Laki-Laki
+                    <input type="radio" name="jk" value="Perempuan" required> Perempuan
+                </div>
+            </div>
+
+            <input type="submit" value="Daftar">
+
+
+        </form>
+    </body>
+</html>
