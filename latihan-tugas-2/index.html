@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validasi Password</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <form id="registrationForm">
+        <h2>Form Upload Katalog</h2>
+
+        <div class="form-group">
+            <label for="nama">Nama Layanan</label>
+            <span class="separator">:</span>
+            <input type="text" id="nama" name="nama" required>
+        </div>
+
+        <div class="form-group">
+            <label for="jenislayanan">Jenis Layanan</label>
+            <span class="separator">:</span>
+            <select id="jenislayanan" name="jenislayanan" required>
+                <option value="">--Pilih--</option>
+                <option value="kiloan">Kiloan</option>
+                <option value="sepatu">Sepatu</option>
+                <option value="jas">Jas</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="varian">Varian</label>
+            <span class="separator">:</span>
+            <select id="varian" name="varian" required>
+                <option value="">--Pilih--</option>
+                <option value="regular">Regular</option>
+                <option value="express">Express</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="harga">Harga</label>
+            <span class="separator">:</span>
+            <input type="text" id="harga" name="harga" required>
+        </div>
+
+         <div class="form-group">
+            <label for="satuan">Satuan</label>
+            <span class="separator">:</span>
+            <select id="satuan" name="satuan" required>
+                <option value="">--Pilih--</option>
+                <option value="kiloan">kg</option>
+                <option value="sepatu">pcs</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="estimasi">Estimasi Waktu</label>
+            <span class="separator">:</span>
+            <input type="text" id="estimasi" name="estimasi" required>
+        </div>
+
+
+        <input type="submit" id="submitBtn" value="Tambah Katalog">
+    </form>
+
+    <!-- tabel hasil input akan muncul di sini -->
+    <table id="katalogTable" border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Jenis</th>
+                <th>Varian</th>
+                <th>Harga</th>
+                <th>Satuan</th>
+                <th>Estimasi</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const tableBody = document.querySelector('#katalogTable tbody');
+        const submitBtn = document.getElementById('submitBtn');
+        let editRow = null;
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                nama: form.nama.value,
+                jenislayanan: form.jenislayanan.value,
+                varian: form.varian.value,
+                harga: form.harga.value,
+                satuan: form.satuan.value,
+                estimasi: form.estimasi.value,
+                };
+
+            if (editRow) {
+                // update existing row
+                updateRow(editRow, data);
+                submitBtn.value = 'Tambah Katalog';
+                editRow = null;
+            } else {
+                addRow(data);
+            }
+
+            form.reset();
+        });
+
+        function addRow(data) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${data.nama}</td>
+                <td>${data.jenislayanan}</td>
+                <td>${data.varian}</td>
+                <td>${data.harga}</td>
+                <td>${data.satuan}</td>
+                <td>${data.estimasi}</td>
+                <td>
+                    <button class="editBtn">Edit</button>
+                    <button class="deleteBtn">Hapus</button>
+                </td>
+            `;
+
+            // attach listeners
+            tr.querySelector('.deleteBtn').addEventListener('click', () => {
+                tr.remove();
+            });
+            tr.querySelector('.editBtn').addEventListener('click', () => {
+                populateFormForEdit(tr);
+            });
+
+            tableBody.appendChild(tr);
+        }
+
+        function populateFormForEdit(row) {
+            const cells = row.children;
+            form.nama.value = cells[0].textContent;
+            form.jenislayanan.value = cells[1].textContent;
+            form.varian.value = cells[2].textContent;
+            form.harga.value = cells[3].textContent;
+            form.satuan.value = cells[4].textContent;
+            form.estimasi.value = cells[5].textContent;
+
+            submitBtn.value = 'Update Katalog';
+            editRow = row;
+        }
+
+        function updateRow(row, data) {
+            const cells = row.children;
+            cells[0].textContent = data.nama;
+            cells[1].textContent = data.jenislayanan;
+            cells[2].textContent = data.varian;
+            cells[3].textContent = data.harga;
+            cells[4].textContent = data.satuan;
+            cells[5].textContent = data.estimasi;
+        }
+    </script>
+
+</body>
+</html>

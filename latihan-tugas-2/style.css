@@ -1,0 +1,109 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 700px;  /* geser lebih lebar supaya tabel muat */
+    display: grid;
+    gap: 20px;
+}
+
+form {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+}
+
+
+
+h2 {
+    text-align: center;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  width: 150px;   /* atur lebar label */
+  font-weight: bold;
+}
+
+.form-group select {
+  flex: 1;        /* supaya dropdown melebar */
+  padding: 8px;
+}
+
+.form-group textarea {
+  flex: 1;        /* supaya textarea melebar */
+  padding: 8px;
+  resize: vertical;
+}
+
+label {
+    font-weight: bold;
+}
+
+.separator {
+    text-align: center;
+}
+
+input[type="text"] {
+    margin-right: 3px;
+}
+input[type="text"] {
+    margin-right: 3px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background: #218838;
+}
+
+/* tabel styling */
+#katalogTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#katalogTable th {
+    background-color: #87cefa; /* biru muda */
+    padding: 8px;
+    text-align: left;
+}
+
+#katalogTable td {
+    padding: 6px;
+}
